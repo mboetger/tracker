@@ -24,13 +24,6 @@ class TaskTile extends StatelessWidget {
         key: Key(task.id),
         startActionPane: ActionPane(
           motion: const ScrollMotion(),
-          dismissible: DismissiblePane(
-            onDismissed: () {}, // Not used because confirmDismiss returns false
-            confirmDismiss: () async {
-              context.read<TaskProvider>().updateTaskProgress(task.id, today, -1);
-              return false; // Prevent dismissal
-            },
-          ),
           children: [
             CustomSlidableAction(
               onPressed: (context) {
@@ -66,13 +59,6 @@ class TaskTile extends StatelessWidget {
         ),
         endActionPane: ActionPane(
           motion: const ScrollMotion(),
-          dismissible: DismissiblePane(
-            onDismissed: () {},
-            confirmDismiss: () async {
-              context.read<TaskProvider>().updateTaskProgress(task.id, today, 1);
-              return false;
-            },
-          ),
           children: [
             CustomSlidableAction(
               onPressed: (context) {
